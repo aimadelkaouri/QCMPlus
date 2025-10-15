@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Questionnaire{% endblock %}
+
+{% block body %}
+    <h1>Questionnaire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ questionnaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ questionnaire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ questionnaire.description }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ questionnaire.createdAt ? questionnaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_questionnaire_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_questionnaire_edit', {'id': questionnaire.id}) }}">edit</a>
+
+    {{ include('admin_questionnaire/_delete_form.html.twig') }}
+{% endblock %}

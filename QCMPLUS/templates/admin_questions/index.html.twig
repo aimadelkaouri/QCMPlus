@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Questions index{% endblock %}
+
+{% block body %}
+    <h1>Questions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Reponse1</th>
+                <th>Reponse2</th>
+                <th>Reponse3</th>
+                <th>Reponse4</th>
+                <th>Reponse5</th>
+                <th>Bonnereponse</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td>{{ question.id }}</td>
+                <td>{{ question.description }}</td>
+                <td>{{ question.reponse1 }}</td>
+                <td>{{ question.reponse2 }}</td>
+                <td>{{ question.reponse3 }}</td>
+                <td>{{ question.reponse4 }}</td>
+                <td>{{ question.reponse5 }}</td>
+                <td>{{ question.bonnereponse }}</td>
+                <td>{{ question.createdAt ? question.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_questions_show', {'id': question.id}) }}">show</a>
+                    <a href="{{ path('app_admin_questions_edit', {'id': question.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_questions_new') }}">Create new</a>
+{% endblock %}
