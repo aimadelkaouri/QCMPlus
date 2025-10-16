@@ -8,17 +8,18 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>IsVerified</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
                 <td>{{ user.email }}</td>
                 <td>
     {% if 'ROLE_ADMIN' in user.roles %}
@@ -29,9 +30,7 @@
         Autre
     {% endif %}
 </td>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
                 </td>
             </tr>

@@ -18,7 +18,13 @@
             <tr>
                 <th>Description</th>
                 <td>{{ questionnaire.description }}</td>
-            </tr>
+            {# </tr>
+                        <tr>
+                <th>Description</th>
+                <td>{{ questionnaire.questions.questionnaire_id}}</td>
+            </tr> #}
+
+            
             <tr>
                 <th>CreatedAt</th>
                 <td>{{ questionnaire.createdAt ? questionnaire.createdAt|date('Y-m-d H:i:s') : '' }}</td>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Questionnaire;
 use App\Entity\Questions;
 use App\Form\Questions1Type;
 use App\Repository\QuestionsRepository;
@@ -43,10 +44,12 @@ class QuestionsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_questions_show', methods: ['GET'])]
-    public function show(Questions $question): Response
+    public function show(Questions $question, Questionnaire $questionnaire): Response
     {
         return $this->render('questions/show.html.twig', [
             'question' => $question,
+            'questionnaire' => $questionnaire,
+
         ]);
     }
 

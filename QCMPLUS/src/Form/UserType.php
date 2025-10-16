@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,6 +14,8 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('nom')
+            ->add('prenom')
             ->add('email')
             // ->add('roles')
 
@@ -25,7 +28,9 @@ class UserType extends AbstractType
             'expanded' => true,   // pour afficher des cases à cocher
         ])
 
-            ->add('password')
+            ->add('plainPassword', TextType::class, [
+                'mapped'=> false
+            ])
             ->add('isVerified')
         ;
     }

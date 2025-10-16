@@ -6,6 +6,7 @@ use App\Entity\Questionnaire;
 use App\Form\QuestionnaireType;
 use App\Repository\QuestionnaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Monolog\DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,7 @@ class AdminQuestionnaireController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $questionnaire = new Questionnaire();
+        $questionnaire->setCreatedAt(new \DateTimeImmutable());
         $form = $this->createForm(QuestionnaireType::class, $questionnaire);
         $form->handleRequest($request);
 

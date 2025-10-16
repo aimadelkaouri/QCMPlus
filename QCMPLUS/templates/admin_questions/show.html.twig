@@ -39,6 +39,13 @@
                 <th>Bonnereponse</th>
                 <td>{{ question.bonnereponse }}</td>
             </tr>
+
+                        <tr>
+                <th>Bonnereponse</th>
+                <td>{{ question.questionnaire.nom }}</td>
+            </tr>
+
+            
             <tr>
                 <th>Created_at</th>
                 <td>{{ question.createdAt ? question.createdAt|date('Y-m-d H:i:s') : '' }}</td>
